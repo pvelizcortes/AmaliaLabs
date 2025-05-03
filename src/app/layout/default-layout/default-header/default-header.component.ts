@@ -35,8 +35,8 @@ export class DefaultHeaderComponent extends HeaderComponent {
   readonly colorMode = this.#colorModeService.colorMode;
 
   readonly colorModes = [
-    { name: 'light', text: 'Light', icon: 'cilSun' },
-    { name: 'dark', text: 'Dark', icon: 'cilMoon' },
+    { name: 'light', text: 'Claro', icon: 'cilSun' },
+    { name: 'dark', text: 'Noche', icon: 'cilMoon' },
     { name: 'auto', text: 'Auto', icon: 'cilContrast' }
   ];
 
