@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { createClient, SupabaseClient, Session } from '@supabase/supabase-js';
 import { Router } from '@angular/router';
 import { supabase } from './supabase.client';
 import { BehaviorSubject, Observable } from 'rxjs'; @Injectable({
   providedIn: 'root'
 })
 
-
-
 export class SupaBaseService {
-  private userSubject = new BehaviorSubject<any>(null);
 
+  private userSubject = new BehaviorSubject<any>(null);
   constructor(private router: Router) {    
     const session = supabase.auth.getSession().then(({ data }) => {
       this.userSubject.next(data.session?.user ?? null);
@@ -47,29 +44,4 @@ export class SupaBaseService {
     }
     return { user, error };
   }
-
-  async testLogin() {
-    return await supabase.auth.signInWithPassword({
-      email: 'pabloveliz.dev@gmail.com',
-      password: 'Amalita1908'
-    });
-  }
-
-  async getClientes() {
-    const { data, error } = await supabase
-      .from('Cliente')
-      .select('*');
-
-    if (error) {
-      console.error('Error al traer clientes:', error.message);
-    } else {
-      console.log('Clientes:', data);
-    }
-    return { data, error };
-  }
-
-  
-
-
-
 }

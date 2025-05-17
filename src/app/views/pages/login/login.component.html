@@ -6,36 +6,30 @@
           <c-card class="p-4">
             <c-card-body>
               <form (ngSubmit)="login()" #loginForm="ngForm">
-                <h1>Login</h1>
-                <p class="text-body-secondary">Sign In to your account</p>
+                <h1>Portal de Ingreso</h1>
+                <p class="text-body-secondary">Ingrese con su correo electrónico y contraseña</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
+                    <svg cIcon name="cilEnvelopeClosed"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" [(ngModel)]="email" name="email" />
+                  <input autoComplete="username" cFormControl placeholder="Correo" [(ngModel)]="email" name="email" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                    [(ngModel)]="password"
-                    name="password"
-                  />
+                  <input autoComplete="current-password" cFormControl placeholder="Contraseña" type="password"
+                    [(ngModel)]="password" name="password" />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
                     <button cButton class="px-4" color="primary" type="submit">
-                      Login
+                      Ingresar
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">
                     <button cButton class="px-0" color="link">
-                      Forgot password?
+                      ¿Olvidó los accesos de su cuenta?
                     </button>
                   </c-col>
                 </c-row>
@@ -45,13 +39,13 @@
           <c-card [ngStyle]="{'minWidth.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">
               <div>
-                <h2>Sign up</h2>
+                <h2>Excelia</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                   tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
-                  Register Now!
+                  Contáctenos
                 </button>
               </div>
             </c-card-body>
