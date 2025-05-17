@@ -1,6 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SupaBaseService } from '../../../supabase/supabase.service';
+
 
 import {
   AvatarComponent,
@@ -45,7 +47,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
     return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
-  constructor() {
+  constructor(private authTestService: SupaBaseService) {
     super();
   }
 
@@ -125,5 +127,10 @@ export class DefaultHeaderComponent extends HeaderComponent {
     { id: 3, title: 'Add new layouts', value: 75, color: 'info' },
     { id: 4, title: 'Angular Version', value: 100, color: 'success' }
   ];
+
+  async logOut(): Promise<void> {
+    await this.authTestService.logout();
+    
+  }
 
 }

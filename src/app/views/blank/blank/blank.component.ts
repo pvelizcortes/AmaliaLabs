@@ -7,7 +7,7 @@ import {
   CardHeaderComponent,
   CardBodyComponent,
 } from '@coreui/angular';
-import { AuthTestService } from '../../../supabase/auth-test.service';
+import { SupaBaseService } from '../../../supabase/supabase.service';
 import { Utils } from '../../../common/utils';
 
 @Component({
@@ -16,17 +16,17 @@ import { Utils } from '../../../common/utils';
     imports: [RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent]
 })
 export class BlankComponent {
-  constructor(private authTestService: AuthTestService, private utils: Utils) {}
+  constructor(private supabaseService: SupaBaseService, private utils: Utils) {}
   async testAuth(){
-    this.authTestService.testAuth();   
+    this.supabaseService.testAuth();   
   }
 
   async testLogin(){
-    this.authTestService.testLogin();
+    this.supabaseService.testLogin();
   }
 
   async getClientes(){
-    this.authTestService.getClientes();
+    this.supabaseService.getClientes();
   }
 
   testUtils(){
