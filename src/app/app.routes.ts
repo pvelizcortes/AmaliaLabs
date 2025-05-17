@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    loadComponent: () => import('./views/pages/redirect/redirect.component').then(m => m.RedirectComponent)
   },
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard], // ✅ Aquí se aplica el guard a todos los hijos
     data: {
       title: 'Home'
     },
