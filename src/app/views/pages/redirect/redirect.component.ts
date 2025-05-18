@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SupaBaseService } from '../../../supabase/supabase.service';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-redirect',
@@ -8,10 +8,10 @@ import { SupaBaseService } from '../../../supabase/supabase.service';
 })
 export class RedirectComponent implements OnInit {
 
-  constructor(private supabaseService: SupaBaseService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
-    this.supabaseService.getUser().subscribe(user => {
+    this.loginService.getUser().subscribe(user => {
       if (user) {
         this.router.navigate(['/dashboard']);
       } else {

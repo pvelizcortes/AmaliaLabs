@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SupaBaseService } from '../../../supabase/supabase.service'; // Ajusta ruta si es necesario
+import { LoginService } from '../../../services/login.service';
 import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ export class LoginComponent {
   password: string = '';
 
   constructor(
-    private supabaseService: SupaBaseService,
+    private supabaseService: LoginService,
     private router: Router
   ) {}
 

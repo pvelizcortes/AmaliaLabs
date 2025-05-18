@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { SupaBaseService } from '../supabase/supabase.service'; // o tu servicio auth
+import { LoginService } from '../services/login.service'; // o tu servicio auth
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,10 +9,10 @@ import { map } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private supabase: SupaBaseService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    return this.supabase.getUser().pipe(
+    return this.loginService.getUser().pipe(
       map(user => {
         if (user) {
           return true;

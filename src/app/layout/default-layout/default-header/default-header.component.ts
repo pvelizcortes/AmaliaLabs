@@ -1,7 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { SupaBaseService } from '../../../supabase/supabase.service';
+import { LoginService } from '../../../services/login.service';
 
 
 import {
@@ -47,14 +47,14 @@ export class DefaultHeaderComponent extends HeaderComponent {
     return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
-  constructor(private authTestService: SupaBaseService) {
+  constructor(private loginService: LoginService) {
     super();
   }
 
   sidebarId = input('sidebar1');
 
   async logOut(): Promise<void> {
-    await this.authTestService.logout();    
+    await this.loginService.logout();    
   }
 
 }
