@@ -11,15 +11,8 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' }
   },
   {
-    name: 'Modulos',
-    url: '/blank',
-    iconComponent: { name: 'cil-layers' },
-    children: [
-      {
-        name: 'Blank',
-        url: '/blank',
-        icon: 'nav-icon-bullet'
-      }      
-    ]
-  }  
+    name: 'Módulos',
+    url: '/modulos',
+    iconComponent: { name: 'cil-layers' }    
+  } 
 ];
