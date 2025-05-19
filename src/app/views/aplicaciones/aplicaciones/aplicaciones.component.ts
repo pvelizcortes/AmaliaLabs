@@ -9,26 +9,32 @@ import {
   CardHeaderComponent,
   CardBodyComponent,
 } from '@coreui/angular';
-import { Router } from '@angular/router';
+
+import {AplicacionesService} from '../../../services/app.service'
+import {LoginService} from '../../../services/login.service'
+import { RouterLink } from '@angular/router';
+
 @Component({
     selector: 'app-aplicaciones',
     templateUrl: './aplicaciones.component.html',
-    imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, NgStyle]
+    imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, NgStyle, RouterLink]
 })
 export class AplicacionesComponent {
 
-  clienteId = 'cliente1'; // o lo recibís dinámicamente
+  aplicaciones: { nombre: string; ruta: string }[] = [];
 
-  // Ejemplo de Apps
-  apps = [
-    { nombre: 'App Ejemplo', ruta: 'app-ejemplo' },
-    { nombre: 'App Ventas', ruta: 'app-ventas' },
-    { nombre: 'App Inventario', ruta: 'app-inventario' }
-  ];
+  constructor(
+    private supabaseService: AplicacionesService,
+    private loginService: LoginService
+  ) {}
 
-  constructor(private router: Router) {}
- 
-  navegarApp(appRuta: string) {
-    this.router.navigate([this.clienteId, appRuta]);
+  ngOnInit() {
+    this.loginService.getUser().subscribe(async (user) => {
+      if (user) {
+        console.log(user);
+        const apps = await this.supabaseService.getAplicacionesPorUsuario(user.id);
+        this.aplicaciones = apps;
+      }
+    });
   }
 }

@@ -7,8 +7,8 @@
         </c-card-header>
         <c-card-body>
           <ul>
-            <li *ngFor="let app of apps" (click)="navegarApp(app.ruta)" style="cursor:pointer;">
-              {{ app.nombre }}
+            <li *ngFor="let app of aplicaciones">
+              <a [routerLink]="app.ruta">{{ app.nombre }}</a>
             </li>
           </ul>
         </c-card-body>
