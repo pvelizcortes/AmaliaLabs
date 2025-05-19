@@ -1,0 +1,18 @@
+<c-container fluid>
+  <c-row>
+    <c-col xs="12">
+      <c-card>
+        <c-card-header>
+          <strong>Mis Aplicaciones</strong>
+        </c-card-header>
+        <c-card-body>
+          <ul>
+            <li *ngFor="let app of apps" (click)="navegarApp(app.ruta)" style="cursor:pointer;">
+              {{ app.nombre }}
+            </li>
+          </ul>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</c-container>

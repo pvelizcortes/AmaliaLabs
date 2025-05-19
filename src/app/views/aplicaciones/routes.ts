@@ -4,19 +4,19 @@ export const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Moudlos Page'
+      title: 'Aplicaciones Page'
     },
     children: [
       {
         path: '',
-        redirectTo: 'modulos',
+        redirectTo: 'aplicaciones',
         pathMatch: 'full'
       },
       {
-        path: 'modulos',
-        loadComponent: () => import('./modulos/modulos.component').then(m => m.ModulosComponent),
+        path: 'aplicaciones',
+        loadComponent: () => import('./aplicaciones/aplicaciones.component').then(m => m.AplicacionesComponent),
         data: {
-          title: 'Modulos'
+          title: 'Aplicaciones'
         }
       }     
     ]
