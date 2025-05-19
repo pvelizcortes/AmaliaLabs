@@ -8,14 +8,15 @@ import { BehaviorSubject, Observable } from 'rxjs'; @Injectable({
 export class LoginService {
   private userSubject = new BehaviorSubject<any>(null);
 
-  constructor(private router: Router) {    
-    const session = supabase.auth.getSession().then(({ data }) => {
-      this.userSubject.next(data.session?.user ?? null);
-    });
-    supabase.auth.onAuthStateChange((_event, session) => {
-      this.userSubject.next(session?.user ?? null);
-    });
-  }
+  constructor(private router: Router) {
+  supabase.auth.getSession().then(({ data }) => {
+    this.userSubject.next(data.session?.user ?? null);
+  });
+
+  supabase.auth.onAuthStateChange((_event, session) => {
+    this.userSubject.next(session?.user ?? null);
+  });
+}
 
   async signIn(email: string, password: string) {
     return await supabase.auth.signInWithPassword({ email: email, password: password });
