@@ -6,10 +6,6 @@ import { clientesRoutes } from './clientes/clientes.routes';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./views/pages/redirect/redirect.component').then(m => m.RedirectComponent)
-  },
-  {
-    path: '',
     component: DefaultLayoutComponent,
     canActivate: [AuthGuard],
     data: {

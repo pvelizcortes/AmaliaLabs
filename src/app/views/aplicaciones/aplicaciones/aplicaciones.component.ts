@@ -31,7 +31,6 @@ export class AplicacionesComponent {
   ngOnInit() {
     this.loginService.getUser().subscribe(async (user) => {
       if (user) {
-        console.log(user);
         const apps = await this.supabaseService.getAplicacionesPorUsuario(user.id);
         this.aplicaciones = apps;
       }
