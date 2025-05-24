@@ -7,7 +7,7 @@ import { supabase } from '../supabase/supabase.client';
 export class AplicacionesService {
   constructor() { }
 
-  async getAplicacionesPorUsuario(id: string): Promise<{ nombre: string; ruta: string }[]> {
+  async getAplicacionesPorUsuario(id: string): Promise<{ nombre: string; ruta: string, descripcion: string, fecha_creacion: Date }[]> {
     const id_auth = id;
 
     // 2. Obtener las apps activas del usuario
@@ -27,7 +27,7 @@ export class AplicacionesService {
     // 3. Obtener las aplicaciones con su id_cliente
     const { data: appsData, error: appsError } = await supabase
       .from('Aplicacion')
-      .select('nombre, nombre_slug, id_cliente')
+      .select('nombre, nombre_slug, id_cliente, created_at, descripcion')
       .in('id_aplicacion', idsAplicaciones);
 
     if (appsError || !appsData) {
@@ -53,7 +53,9 @@ export class AplicacionesService {
       const cliente = clientesData.find(c => c.id_cliente === app.id_cliente);
       return {
         nombre: app.nombre,
-        ruta: `/${cliente?.nombre_slug ?? 'desconocido'}/${app.nombre_slug}`
+        ruta: `/${cliente?.nombre_slug ?? 'desconocido'}/${app.nombre_slug}`,
+        descripcion: app.descripcion,
+        fecha_creacion: app.created_at
       };
     });
 

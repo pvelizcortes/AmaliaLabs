@@ -2,15 +2,24 @@
   <c-row>
     <c-col xs="12">
       <c-card>
-        <c-card-header>
-          <strong>Mis Aplicaciones</strong>
-        </c-card-header>
         <c-card-body>
-          <ul>
-            <li *ngFor="let app of aplicaciones">
-              <a [routerLink]="app.ruta">{{ app.nombre }}</a>
-            </li>
-          </ul>
+          <h5 cCardTitle>Mis Aplicaciones</h5>
+          <hr>
+          <div cListGroup>
+            <c-col *ngFor="let app of aplicaciones" xs="3" class="border border-success">
+              <a [routerLink]="app.ruta" cListGroupItem>
+                <div class="d-flex w-100 justify-content-between mb-2">
+                  <h5 class="mb-1">{{ app.nombre }}</h5>
+                </div>
+                <p class="mb-3">
+                  {{ app.descripcion }}                  
+                </p>
+                <p>
+                  <small><i>Creado el: {{ app.fecha_creacion | date:'dd/MM/yyyy' }}</i></small>
+                </p>
+              </a>
+            </c-col>
+          </div>
         </c-card-body>
       </c-card>
     </c-col>

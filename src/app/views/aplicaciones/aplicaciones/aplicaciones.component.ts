@@ -8,6 +8,8 @@ import {
   CardComponent,
   CardHeaderComponent,
   CardBodyComponent,
+  ListGroupDirective,
+  ListGroupItemDirective,
 } from '@coreui/angular';
 
 import {AplicacionesService} from '../../../services/app.service'
@@ -17,11 +19,11 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-aplicaciones',
     templateUrl: './aplicaciones.component.html',
-    imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, NgStyle, RouterLink]
+    imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, NgStyle, RouterLink, ListGroupDirective, ListGroupItemDirective]
 })
 export class AplicacionesComponent {
 
-  aplicaciones: { nombre: string; ruta: string }[] = [];
+  aplicaciones: { nombre: string; ruta: string, descripcion: string, fecha_creacion: Date }[] = [];
 
   constructor(
     private supabaseService: AplicacionesService,
