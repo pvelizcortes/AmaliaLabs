@@ -3,23 +3,46 @@
     <c-col xs="12">
       <c-card>
         <c-card-body>
-          <h5 cCardTitle>Mis Aplicaciones</h5>
-          <hr>
-          <div cListGroup>
-            <c-col *ngFor="let app of aplicaciones" xs="3" class="border border-success">
-              <a [routerLink]="app.ruta" cListGroupItem>
-                <div class="d-flex w-100 justify-content-between mb-2">
-                  <h5 class="mb-1">{{ app.nombre }}</h5>
-                </div>
-                <p class="mb-3">
-                  {{ app.descripcion }}                  
-                </p>
-                <p>
-                  <small><i>Creado el: {{ app.fecha_creacion | date:'dd/MM/yyyy' }}</i></small>
-                </p>
-              </a>
-            </c-col>
+
+          <!-- Título + Input -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 cCardTitle class="mb-0">Mis Aplicaciones</h5>
+            <input type="text" class="form-control w-auto" style="max-width: 250px;" placeholder="Buscar..."
+              cFormControl [(ngModel)]="filtro" (ngModelChange)="filtrarAplicaciones()" />
           </div>
+
+          <hr>
+
+          <!-- Lista de aplicaciones -->
+          <div cListGroup>
+            <ng-container *ngIf="appsFiltradas.length > 0; else sinResultados">
+              <c-col *ngFor="let app of appsFiltradas" lg="3">
+                <div [routerLink]="app.ruta" class="app-card">
+                  <div class="app-card-header d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                      <svg cIcon name="cilSpreadsheet" size="xl" width="24" class="me-2 text-success"></svg>
+                      <h5 class="mb-0">{{ app.nombre }}</h5>
+                    </div>
+                    <span class="badge bg-success">Activa</span>
+                  </div>
+                  <div class="app-card-body">
+                    <p class="mb-2">{{ app.descripcion }}</p>
+                    <p class="mb-0 text-muted">
+                      <small><i>Creado el: {{ app.fecha_creacion | date:'dd/MM/yyyy' }}</i></small>
+                    </p>
+                  </div>
+                </div>
+              </c-col>
+            </ng-container>
+
+            <!-- Template para cuando no hay resultados -->
+            <ng-template #sinResultados>
+              <div class="text-center text-muted mt-4">
+                <p>No se encontraron aplicaciones.</p>
+              </div>
+            </ng-template>
+          </div>
+
         </c-card-body>
       </c-card>
     </c-col>

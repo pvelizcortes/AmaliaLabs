@@ -1,3 +1,1 @@
-<div class="mb-3">
-    <input cFormControl id="formFile" type="file" />
-</div>
+<input cFormControl id="formFile" type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />

@@ -1,0 +1,44 @@
+.app-card {
+  display: block; 
+  border: 2px solid #198754; // Verde Bootstrap
+  border-radius: 12px;
+  padding: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+ 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {    
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .app-card-header {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 0.75rem;
+
+    h5 {
+      
+      font-weight: 600;
+    }
+  }
+
+  .app-card-body {
+    font-size: 0.9rem;
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .app-card-header i {
+    font-size: 1.3rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+    border-radius: 8px;
+  }
+}

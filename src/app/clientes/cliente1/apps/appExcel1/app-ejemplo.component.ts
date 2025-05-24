@@ -12,17 +12,24 @@ import {
   FormControlDirective,
   FormLabelDirective,
   BorderDirective,
-  AlertComponent 
+  AlertComponent
 } from '@coreui/angular';
 @Component({
   standalone: true,
   selector: 'app-ejemplo',
   templateUrl: './app-ejemplo.component.html',
   styleUrls: ['./app-ejemplo.component.scss'],
-  imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, FormLabelDirective, FormControlDirective, BorderDirective, UploadFileComponent, AlertComponent ]
+  imports: [CommonModule, RowComponent, ColComponent, ContainerComponent, CardComponent, CardHeaderComponent, CardBodyComponent, FormLabelDirective, FormControlDirective, BorderDirective, UploadFileComponent, AlertComponent]
 })
-export class AppEjemploComponent {
 
+export class AppEjemploComponent {
+  jsonData: any[] = [];
   titulo = "App de Ejemplo 1";
+
   constructor() { }
+
+  getJson(datos: any[]) {
+    this.jsonData = datos;
+    console.log('JSON recibido desde hijo:', this.jsonData);
+  }
 }
