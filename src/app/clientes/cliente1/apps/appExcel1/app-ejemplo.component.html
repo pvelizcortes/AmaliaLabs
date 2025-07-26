@@ -1,15 +1,41 @@
 <c-container fluid>
-  <c-row>
-    <c-col xs="12">
-      <c-card>
-        <c-card-body>
-          <c-row>            
-            <c-col>
-              <upload-file (dataExcel)="getJson($event)"></upload-file>
-            </c-col>
-          </c-row>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
+  <c-card *ngIf="showUpload">
+    <c-card-body>
+      <c-row>
+        <c-col>
+          <h4>Seleccione su archivo Excel para procesar</h4>
+          <upload-file (dataExcel)="getJson($event)"></upload-file>
+        </c-col>
+      </c-row>
+    </c-card-body>
+  </c-card>
+
+  <c-card *ngIf="!showUpload" class="mb-4">
+    <c-card-body>
+      <c-row>
+        <c-col class="text-center">
+          <img src="https://mgrecjtjtfpdyjoumcsg.supabase.co/storage/v1/object/public/excelia/logos/2550logotiposqueteinspiraran.webp" style="width:20%; height: fit-content;">
+        </c-col>
+      </c-row>
+      <c-row class="justify-content-md-center">
+        <c-col>
+          <h4>Resultados:</h4>
+          <ul>
+            <li><strong>Promedio: </strong> {{promedio}}</li>
+            <li><strong>Suma: </strong> {{suma}}</li>
+          </ul>
+        </c-col>
+      </c-row>
+    </c-card-body>
+  </c-card>
+
+  <c-card *ngIf="!showUpload" class="mb-4">
+    <c-card-body>
+      <c-row class="justify-content-md-center">
+        <c-col lg="6">
+          <c-chart type="line" [data]="lineChartData" [options]="lineChartOptions" />       
+        </c-col>
+      </c-row>
+    </c-card-body>
+  </c-card>
 </c-container>

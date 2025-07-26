@@ -17,6 +17,7 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
+import { LoadingComponent } from '../../common/components/loading/loading.component'
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -44,7 +45,8 @@ function isOverflown(element: HTMLElement) {
     NgScrollbar,
     RouterOutlet,
     RouterLink,
-    ShadowOnScrollDirective
+    ShadowOnScrollDirective,
+    LoadingComponent
   ]
 })
 export class DefaultLayoutComponent {
